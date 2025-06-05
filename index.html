@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learn English</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="logo.png" alt="Learn English Logo" />
+      <span role="img" aria-label="bee">🐝</span> Learn English
+    </div>
+  </header>
+
+  <main>
+    <section class="tabs">
+      <nav class="tab-buttons" role="tablist">
+        <button class="tab-button active" data-tab="b1" role="tab" aria-selected="true">B1</button>
+        <button class="tab-button" data-tab="b1plus" role="tab" aria-selected="false">B1+</button>
+        <button class="tab-button" data-tab="b2" role="tab" aria-selected="false">B2</button>
+      </nav>
+
+      <!-- B1 TAB -->
+      <section id="b1" class="tab-content" style="display: block;" role="tabpanel">
+        <h2>Level B1</h2>
+
+        <!-- Subtabs -->
+        <nav class="subtabs" role="tablist">
+          <button class="subtab-button active" onclick="openSubTab(event, 'b1-listening')" role="tab" aria-selected="true">Listening</button>
+          <button class="subtab-button" onclick="openSubTab(event, 'b1-grammar')" role="tab" aria-selected="false">Grammar</button>
+          <button class="subtab-button" onclick="openSubTab(event, 'b1-speaking')" role="tab" aria-selected="false">Speaking</button>
+          <button class="subtab-button" onclick="openSubTab(event, 'b1-reading')" role="tab" aria-selected="false">Reading</button>
+          <button class="subtab-button" onclick="openSubTab(event, 'b1-useofenglish')" role="tab" aria-selected="false">Use of English</button>
+        </nav>
+
+        <!-- Listening -->
+        <section id="b1-listening" class="subtab-content" style="display: block;">
+          <h3>🎧 Listening Practice</h3>
+          <ul class="topic-list">
+            <li><a href="#people-relationships">People and Relationships</a></li>
+            <li><a href="#work-study">Work and Study</a></li>
+            <li><a href="#travel-transport">Travel and Transport</a></li>
+          </ul>
+
+          <section id="people-relationships" class="topic-section">
+            <h4>People and Relationships</h4>
+            <ul>
+              <li class="play-word" data-audio="People/Friend.mp3">Friend</li>
+              <li class="play-word" data-audio="People/Neighbor.mp3">Neighbor</li>
+              <li class="play-word" data-audio="People/Cousin.mp3">Cousin</li>
+              <li class="play-word" data-audio="People/Colleague.mp3">Colleague</li>
+              <li class="play-word" data-audio="People/Partner.mp3">Partner</li>
+              <li class="play-word" data-audio="People/Generation.mp3">Generation</li>
+            </ul>
+          </section>
+
+          <section id="work-study" class="topic-section">
+            <h4>Work and Study</h4>
+            <ul>
+              <li class="play-word" data-audio="Audio/Apple.mp3">Job</li>
+              <li class="play-word" data-audio="Audio/Car.mp3">Career</li>
+              <li class="play-word" data-audio="audio3.mp3">To graduate</li>
+              <li class="play-word" data-audio="audio3.mp3">Manager</li>
+              <li class="play-word" data-audio="audio3.mp3">Meeting</li>
+              <li class="play-word" data-audio="audio3.mp3">To apply for</li>
+            </ul>
+          </section>
+
+          <section id="travel-transport" class="topic-section">
+            <h4>Travel and Transport</h4>
+            <ul>
+              <li class="play-word" data-audio="Audio/Apple.mp3">Ticket</li>
+              <li class="play-word" data-audio="Audio/Car.mp3">Departure</li>
+              <li class="play-word" data-audio="audio3.mp3">Arrival</li>
+              <li class="play-word" data-audio="audio3.mp3">Luggage</li>
+              <li class="play-word" data-audio="audio3.mp3">To book</li>
+              <li class="play-word" data-audio="audio3.mp3">To delay</li>
+            </ul>
+          </section>
+        </section>
+
+      <!-- Grammar -->
+      <div id="b1-grammar" class="subtab-content" style="display: none;">
+        <h3>Grammar Practice</h3>
+ <!-- 1. Tiempos Verbales -->
+<article class="activity-card">
+  <p><strong>1. I __________ (see) that movie before.</strong></p>
+  <button onclick="checkAnswer(this, false)">saw</button>
+  <button onclick="checkAnswer(this, true)">have seen</button>
+  <button onclick="checkAnswer(this, false)">see</button>
+  <button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+
+</article>
+
+<!-- 2. Primer condicional -->
+<article class="activity-card">
+  <p><strong>2. If it rains, we __________ at home.</strong></p>
+  <button onclick="checkAnswer(this, false)">stays</button>
+  <button onclick="checkAnswer(this, true)">will stay</button>
+  <button onclick="checkAnswer(this, false)">stayed</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+
+</article>
+
+<article class="activity-card">
+          <p><strong>3. Put the words in the correct order (drag and drop):</strong></p>
+          <div id="dragContainer" class="drag-container"></div>
+          <button onclick="checkDragOrder()">Check Order</button>
+          <p id="dragResult"></p>
+          <button id="retryBtn" onclick="setupDragWords()" style="display: none;">🔄 Try Again</button>
+        </article>
+
+<!-- 4. Reported Speech -->
+<article class="activity-card">
+  <p><strong>4. She said, “I am tired.” → She said __________.</strong></p>
+  <button onclick="checkAnswer(this, false)">she is tired</button>
+  <button onclick="checkAnswer(this, true)">she was tired</button>
+  <button onclick="checkAnswer(this, false)">she will be tired</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 5. Verbos modales -->
+<article class="activity-card">
+  <p><strong>5. You __________ study more if you want to pass the test.</strong></p>
+  <button onclick="checkAnswer(this, true)">should</button>
+  <button onclick="checkAnswer(this, false)">might</button>
+  <button onclick="checkAnswer(this, false)">can</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 6. Verbos con -ing / to -->
+<article class="activity-card">
+  <p><strong>6. I enjoy __________ books.</strong></p>
+  <button onclick="checkAnswer(this, false)">read</button>
+  <button onclick="checkAnswer(this, true)">reading</button>
+  <button onclick="checkAnswer(this, false)">to read</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 7. Voz pasiva -->
+<article class="activity-card">
+  <p><strong>7. They build houses. → __________.</strong></p>
+  <button onclick="checkAnswer(this, true)">Houses are built</button>
+  <button onclick="checkAnswer(this, false)">Houses were build</button>
+  <button onclick="checkAnswer(this, false)">Houses is built</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 8. Relative clauses -->
+<article class="activity-card">
+  <p><strong>8. Combine: The man is my teacher. He is wearing a hat.</strong></p>
+  <button onclick="checkAnswer(this, true)">The man who is wearing a hat is my teacher</button>
+  <button onclick="checkAnswer(this, false)">The man is wearing a hat who is my teacher</button>
+  <button onclick="checkAnswer(this, false)">My teacher is the man which is wearing a hat</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 9. Question tags -->
+<article class="activity-card">
+  <p><strong>9. She’s coming to the party, __________?</strong></p>
+  <button onclick="checkAnswer(this, true)">isn’t she?</button>
+  <button onclick="checkAnswer(this, false)">is she?</button>
+  <button onclick="checkAnswer(this, false)">wasn’t she?</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+<!-- 10. Preposiciones -->
+<article class="activity-card">
+  <p><strong>10. We met __________ the morning.</strong></p>
+  <button onclick="checkAnswer(this, false)">at</button>
+  <button onclick="checkAnswer(this, true)">in</button>
+  <button onclick="checkAnswer(this, false)">on</button>
+<button class="retry-btn" onclick="resetCard(this)" style="display:none; margin-top: 10px;">
+  🔄 Volver a intentar
+</button>
+</article>
+
+
+
+        
+<button onclick="resetAllInSubtab('b1-grammar')" style="margin-top: 15px;">🧹 Reset</button>
+
+
+      </div>
+
+      <!-- Speaking -->
+        <section id="b1-speaking" class="subtab-content" style="display: none;">
+          <h3>🗣️ Speaking Section</h3>
+          <p><strong>Say aloud:</strong> "Hello, how are you?"</p>
+          <button onclick="startRecognition()">🎤 Speak</button>
+          <p id="resultado">Say something...</p>
+          <p id="mensajeError" class="error-message" style="display: none;">❌ Incorrect. Try again.</p>
+          <button id="reintentar" onclick="startRecognition()" style="display: none;">🔄 Retry</button>
+        </section>
+
+        <!-- Reading -->
+        <section id="b1-reading" class="subtab-content" style="display: none;">
+          <h3>📖 Reading Section</h3>
+
+          <article class="activity-card">
+            <h4>Daily Routine</h4>
+            <button onclick="playReading('audios/daily_routine.mp3')">▶️ Listen</button>
+            <p><strong>What does the person do in the morning?</strong></p>
+            <button onclick="checkReadingAnswer(this, false)">Go to bed</button>
+            <button onclick="checkReadingAnswer(this, true)">Have breakfast</button>
+            <button onclick="checkReadingAnswer(this, false)">Watch TV</button>
+            <p class="message-result"></p>
+            <button class="retry-btn" onclick="resetCard(this)" style="display: none;">🔄 Try Again</button>
+          </article>
+
+          <article class="activity-card">
+            <h4>At the Zoo</h4>
+            <button onclick="playReading('audios/at_the_zoo.mp3')">▶️ Listen</button>
+            <p><strong>Which animal does the girl like the most?</strong></p>
+            <button onclick="checkReadingAnswer(this, false)">Elephant</button>
+            <button onclick="checkReadingAnswer(this, false)">Giraffe</button>
+            <button onclick="checkReadingAnswer(this, true)">Monkey</button>
+            <p class="message-result"></p>
+            <button class="retry-btn" onclick="resetCard(this)" style="display: none;">🔄 Try Again</button>
+          </article>
+
+          <article class="activity-card">
+            <h4>Weekend Plans</h4>
+            <button onclick="playReading('audios/weekend_plans.mp3')">▶️ Listen</button>
+            <p><strong>What will the boy do on Sunday?</strong></p>
+            <button onclick="checkReadingAnswer(this, false)">Go to the beach</button>
+            <button onclick="checkReadingAnswer(this, false)">Visit grandma</button>
+            <button onclick="checkReadingAnswer(this, true)">Play soccer</button>
+            <p class="message-result"></p>
+            <button class="retry-btn" onclick="resetCard(this)" style="display: none;">🔄 Try Again</button>
+          </article>
+        </section>
+
+        <!-- Use of English -->
+        <section id="b1-useofenglish" class="subtab-content" style="display: none;">
+          <h3>🧩 Use of English</h3>
+          <button class="subtab-button active" onclick="openSubTab(event, 'use1')">Exercise 1</button>
+
+          <div id="use1" class="subtab-content" style="display: block;">
+            <article class="activity-card">
+              <h4>Present Simple</h4>
+              <p><strong>Choose the correct sentence:</strong></p>
+              <button onclick="checkAnswer(this, false)">He go to school every day.</button>
+              <button onclick="checkAnswer(this, true)">He goes to school every day.</button>
+              <button onclick="checkAnswer(this, false)">He going to school every day.</button>
+              <p class="message-result"></p>
+              <button class="retry-btn" onclick="resetCard(this)" style="display: none;">🔄 Try Again</button>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <!-- B1+ TAB -->
+      <section id="b1plus" class="tab-content" style="display: none;" role="tabpanel">
+        <h2>Level B1+</h2>
+        <p>Activities for level B1+ coming soon.</p>
+      </section>
+
+      <!-- B2 TAB -->
+      <section id="b2" class="tab-content" style="display: none;" role="tabpanel">
+        <h2>Level B2</h2>
+        <p>Activities for level B2 coming soon.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ to help every child learn at their own pace.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
