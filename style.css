@@ -1,30 +1,24 @@
-
+/* === Estilos generales === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom, #f0f8ff, #e0f7fa);
   color: #333;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;        
-  
 }
-
 
 header {
   background-color: #a2d2ff;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 1rem;
   text-align: center;
   font-size: 2.2rem;
   font-weight: bold;
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 15px 15px;
 }
 
 .logo-title {
@@ -39,23 +33,54 @@ header {
   width: 80px;
 }
 
-.content {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  width: 90%;
-  max-width: 1000px;
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-/* === Tabs container === */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  outline: none;
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+button {
+  background-color: #5bd1c5;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #c8e4ff;
+  transform: scale(1.05);
+  outline: 3px solid #248be4;
+  outline-offset: 2px;
+}
+
+/* === Navegación por pestañas === */
 .tabs {
-  margin-top: 1.5rem;
+  margin: 2rem auto;
   width: 90%;
-  max-width: 800px;
+  max-width: 1100px;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* === Tab buttons === */
 .tab-buttons {
   display: flex;
   gap: 1rem;
@@ -69,9 +94,9 @@ header {
   background-color: #dbe9ff;
   font-weight: bold;
   color: #333;
-  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .tab-button:hover,
@@ -87,9 +112,9 @@ header {
   border-bottom: 3px solid white;
 }
 
-/* === Tab content === */
 .tab-content {
   background-color: white;
+  padding: 1rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   min-height: 250px;
   text-align: center;
@@ -99,8 +124,9 @@ header {
 .subtabs {
   margin-top: 1rem;
   display: flex;
-  gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
   border-bottom: 2px solid #80deea;
 }
 
@@ -141,6 +167,7 @@ header {
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -163,15 +190,111 @@ header {
   text-decoration: underline;
 }
 
-/* === ESTILOS MEJORADOS PARA LISTENING === */
+/* === Actividad de arrastrar y soltar === */
+.match-container, .matching-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.column {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.drag-word {
+  padding: 8px 14px;
+  border: 1px solid #a7c7e7;
+  border-radius: 6px;
+  background-color: #d7e9f7;
+  color: #264653;
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.drag-word:hover {
+  background-color: #a9d6e5;
+  border-color: #6bbcd636;
+  color: #46a6d9;
+}
+
+.drag-word.drag-over {
+  border: 2px dashed #89c9b8;
+  background-color: #def7e3;
+}
+
+.match-item {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.match-item.selected {
+  background-color: #cce5ff;
+}
+
+.selected {
+  background-color: #f7d6e0;
+  color: #7a496e;
+  border-color: #f4a7b9;
+}
+
+.correct {
+  background-color: #c3e6cb;
+  color: #2e7d32;
+  border-color: #81c784;
+  font-weight: 600;
+}
+
+.incorrect {
+  background-color: #c3636b;
+  color: #a94442;
+  border-color: #f5c6cb;
+  font-weight: 600;
+}
+
+#dragResult {
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #264653;
+}
+
+#dragResult.correct {
+  color: #7db053;
+}
+
+#dragResult.incorrect {
+  color: #8342a9;
+}
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* === Actividad de Listening === */
 #b1-listening {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
   background: #f5f9ff;
   border-radius: 8px;
 }
 
-/* Cada bloque de tema dentro de listening */
 .topic-section {
   background: white;
   border: 1px solid #cbd5e1;
@@ -187,7 +310,6 @@ header {
   box-shadow: 0 4px 12px rgb(100 116 139 / 0.25);
 }
 
-/* Títulos de cada tema */
 .topic-section h4 {
   margin-top: 0;
   color: #1e40af;
@@ -196,7 +318,6 @@ header {
   margin-bottom: 10px;
 }
 
-/* Botones de reproducir */
 .topic-section button {
   background-color: #3b82f6;
   color: white;
@@ -208,8 +329,8 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.25s ease, transform 0.3s ease;
   margin-bottom: 15px;
+  transition: background-color 0.25s ease, transform 0.3s ease;
 }
 
 .topic-section button:hover,
@@ -220,13 +341,11 @@ header {
   transform: scale(1.05);
 }
 
-/* Icono de sonido delante del texto del botón */
 .topic-section button::before {
   content: "🔊";
   font-size: 1.2em;
 }
 
-/* Lista de vocabulario en estilo "chips" */
 .topic-section ul {
   list-style: none;
   padding: 0;
@@ -240,9 +359,8 @@ header {
   padding: 7px 14px;
   border-radius: 25px;
   font-weight: 600;
-  color: #1e3a8a;
+  color: #4260b0;
   box-shadow: 1px 1px 3px rgb(30 58 138 / 0.15);
-  user-select: none;
   cursor: default;
   transition: background-color 0.3s ease;
 }
@@ -251,50 +369,34 @@ header {
   background-color: #c7d2fe;
 }
 
-/* === Cards === */
-.card {
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
+/*--------------SPEAKING-------------------*/
+.error-message {
+  color: red;
+  font-weight: bold;
 }
 
-.card:hover,
-.card:focus-within {
-  transform: translateY(-5px);
-  outline: none;
+.correct-message {
+  color: green;
+  font-weight: bold;
 }
 
-.card h2 {
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-}
-
-/* Botones generales */
 button {
-  background-color: #ffafcc;
-  border: none;
-  border-radius: 10px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  margin: 5px 0;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover,
-button:focus {
-  background-color: #ffc8dd;
-  transform: scale(1.05);
-  outline: 3px solid #e91e63;
-  outline-offset: 2px;
+.hidden {
+  display: none;
 }
 
-/* Contenedor actividades */
+/* === Contenedor general de actividades === */
 .activities {
   width: 90%;
-  max-width: 900px;
-  margin-top: 3rem;
+  max-width: 1100px;
+  margin: 2rem auto;
   background-color: #e0f7fa;
   padding: 2rem;
   border-radius: 20px;
@@ -306,7 +408,6 @@ button:focus {
   margin-bottom: 1.5rem;
 }
 
-/* Tarjetas dentro de actividades */
 .activity-card {
   margin-bottom: 2rem;
   background-color: #ffffff;
@@ -316,25 +417,6 @@ button:focus {
   box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 }
 
-/* Botones dentro de activity-card */
-.activity-card button {
-  margin: 0.5rem 0.25rem;
-  background-color: #80deea;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.activity-card button:hover,
-.activity-card button:focus {
-  background-color: #4fb3b9;
-  outline: 3px solid #008080;
-  outline-offset: 2px;
-  transform: scale(1.05);
-}
-
-/* Inputs dentro de activity-card */
 .activity-card input {
   padding: 0.5rem;
   border-radius: 8px;
@@ -343,10 +425,21 @@ button:focus {
   width: 100%;
   max-width: 300px;
 }
-
-/* Drag container */
-.drag-container {
-  display: flex;
-  flex-wrap: wrap;
  
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+h5{
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/*-----MULTIPLE OPTIONS ----*/
+
+button.selected {
+  background-color: #ffd54f;
+  color: #000;
+  border: 2px solid #ffa000;
 }
